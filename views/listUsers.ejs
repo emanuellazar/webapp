@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <%- include('partials/head.ejs') %>
+<body>
+  <div class="header">
+    <%- include('partials/header.ejs') %>
+    <h2>List of users:</h2>
+  </div>
+  <div>
+    <form class="formText" name="search_form" method="POST" enctype="multipart/form-data" action="/userList">
+        <p>Search by name: <input type="text" name="userNameCriteria" placeholder="username"
+            pattern="^[A-z ]*$" title="You can only insert letters in this field" class="formText inputText" ></p>
+        <p><input class="inputSubmit" type="submit" value="Search"></p>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>UserName</th>
+      <th>Role</th>
+      <th>Change Status</th>
+    </tr>
+    <% userData.forEach( (user) => { %>
+    <tr id="parent<%= user.userName %>">
+        <td><%= user.userName %></th>
+        <td id="<%= user.userName %>"><%= user.role %></th>
+        <% if(user.role === 'Admin') { %>
+        <td>
+            <button class="inputSubmit role<%= user.userName %>" id="changeRole" onclick="changeRole('<%= user.userName %>')">
+                <text id="roleText<%= user.userName %>">Change role to user</text>
+            </button>
+        </td>
+        <% } else { %>
+        <td>
+            <button  class="inputSubmit role<%= user.userName %>" id="changeRole" onclick="changeRole('<%= user.userName %>')">
+                <text id="roleText<%= user.userName %>">Change role to admin</text>
+            </button>
+        </td>  
+        <% } %>
+    </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

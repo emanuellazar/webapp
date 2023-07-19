@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MyForms</title>
+        <meta charset="UTF-8">
+        <script src="./script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <!--pattern="([A-Z][a-z]*\ )*[A-Z][a-z]*$" throws error for some reason-->
+    <body onload="hideSubmit();setFooter()">
+        <h1>My form</h1>
+        <form id="form">
+            <p>Name: <input type="text" name="name" id="name" pattern="^[A-z]+([ ][A-Z][a-z]+)+$" title="Name must start with uppercase and must only contain letters"/></p>
+            <p>Birthday: <input type="date" name="birthday" id="birthday" /></p>
+            <p>Email: <input type="email" name="email" id="email" onblur="validateEmail();showSubmit()"></p>
+            <p>Favorite webpage: <input type="url" name="webpage" id="webpage" onblur="validateWebpage(); showSubmit()"></p>
+            <p><input type="submit" value="Sublit!" id="submit" /></p>
+            <p>Operation type:
+                <select name="alapmuvelet" id="operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+            </p>
+            <p>Number of questions:
+                <select name="kerdesek_szama" id="nr">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </p>
+        </form>
+        <button id="generate" onclick="createQuestions()">Generate questions</button>
+        <div id="playbox">
+            <canvas id="canvas" width="700"></canvas>
+            <div id="qa">
+                <div id="questions">Questions</div>
+                <div id="answers">Answers</div>
+            </div>
+        </div>
+        <footer></footer>
+    </body>
+</html>

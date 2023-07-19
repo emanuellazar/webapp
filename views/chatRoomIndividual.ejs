@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <%- include('partials/head.ejs') %>
+  <body>
+      <div class="header">
+          <%- include('partials/header.ejs') %>
+          <h2>Your personal chatroom with <%= sendUserName%></h2>
+      </div>
+      <div id="messages"></div>
+      <%if(messages[0].user === '') {%>
+        <h2>No messages yet, would you like to send a message to <%= sendUserName%>?</h2>
+      <%} else {%>
+      <% messages.forEach( (message) => { %>
+        <% if(message.user === logedUserName) {%>
+        <div class="containerMessage">
+          <img src="/meIcon.jpg" alt="Avatar" style="width:100%;">
+          <p class="formText"><%= message.mess%></p>
+          <span class="time-right"><%= message.user%></span>
+        </div>
+        <% } else { %>
+        <div class="containerMessage darker">
+          <img src="/youIcon.jpg" alt="Avatar" class="right" style="width:100%;">
+          <p class="formText"><%= message.mess%></p>
+          <span class="time-left"><%= message.user%></span>
+        </div>
+      <% } } ) }%>
+      <form action="/openChatroom/<%= sendUserName%>" method="post">
+        <p class="formText"><input class="inputText" type="text" name="message" placeholder="Hey whats up?" required></p>
+        <input name="path" value="<%= messagesFilePath%>" hidden>
+        <input id="sendMessage" class="inputSubmit oneLine" type="submit" value="Send message">
+    </form>
+  </body>
+</html>

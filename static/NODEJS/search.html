@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <title>Lazar Imobiliare</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class = "header">
+            <a href = "./user_post.html">Lakashirdetes keszitese</a>
+            <a href = "./upload_photo.html">Kepek feltoltese</a>
+            <a>Lakas Kereses</a>
+        </div>
+        <h1>Lazar Imobiliare</h1>
+        <section>
+            <h2>Talald meg a szamodra tokeletes lakast</h2>
+            <form name="search_form" method="POST" action="/search" enctype="multipart/form-data">
+                <p>Varos: <input type="text" name="varos" placeholder="Varos neve"
+                    pattern="^[A-z ]*$" title="You can only insert letters in this field" required></p>
+                <p>Negyed: <input type="text" name="negyed" placeholder="Negyed neve"
+                    pattern="^[A-z ]*$" title="You can only insert letters in this field" required></p>
+                <p>Minimum Ar: <input type="text" name="minAr" pattern="^[1-9][0-9]*$" placeholder="Minimum ar euroban"
+                    title="You can only insert numbers in this field" required></p>
+                <p>Maximum Ar: <input type="text" name="maxAr" pattern="^[1-9][0-9]*$" placeholder="Maximum ar euroban"
+                    title="You can only insert numbers in this field" required></p>
+                <p><input type="submit" value="Submit"></p>
+            </form>
+        </section>
+    </body>
+
+</html>

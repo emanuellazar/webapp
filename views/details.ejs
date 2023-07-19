@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <%- include('partials/head.ejs') %>
+<body>
+    <%- include('partials/header.ejs') %>
+    <h2> Details of the property:</h2>
+    <div class="lakasok formText">
+      <ul style="list-style-type:none;">
+        <li><strong>Owner: </strong> <%= ad.owner %></li>
+        <li><strong>PropertyID: </strong> <%= ad.adID %></li>
+        <li><strong>City: </strong><%= ad.varos %></li>
+        <li><strong>District: </strong><%= ad.negyed %></li>
+        <li><strong>Area: </strong><%= ad.felszinterulet %></li>
+        <li><strong>Price: </strong><%= ad.ar %></li>
+        <li><strong>Number of bedrooms: </strong><%= ad.szobakSzama %></li>
+        <li><strong>Date: </strong><%= ad.datum %></li>
+      </ul>
+    </div>
+    <section>
+        <h2 class="formText">Photos:</h2>
+        <% if (!notEmpty) {%>
+            <p class="formText" id="errorMessage">There are no photos uploaded for this property</p>
+        <% } else { %>
+        <%  images.forEach( (image) => { %>
+            <img src="<%= image.imagePath %>" class="<%= image.imageID%>">
+            <% if(adIsLogedinUsers) {%>
+            <button  class="<%= image.imageID%>" id="deleteImage" onclick="torol('<%= image.imageID%>')">Delete image</button>
+            <% }%>
+        <% }); }%>
+    </section>
+    <% if(adIsLogedinUsers) {%>
+    <section>
+        <h2 class="formText">Upload a photo</h2>
+        <form class="formText" name="upload_image_form" method="POST" action="/uploadPhoto" enctype="multipart/form-data">
+            <input type="file" name="photo" required>
+            <input name="adID" value="<%= ad.adID%>" hidden>
+            <p><input class="inputText" type="submit" value="Submit"></p>
+        </form>
+    </section>
+    <% }%> 
+</body>
+</html>

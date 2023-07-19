@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <%- include('partials/head.ejs') %>
+<body>
+  <div class="header">
+    <%- include('partials/header.ejs') %>
+    <h2>The simplest way to find property</h2>
+  </div>
+    <% if(isLogedIn) { %>
+    <form action="/createAd" method="get">
+      <input id="linkPage" class="inputSubmit" type="submit" value="Post your real estate listings here"/>
+    </form>
+    <% } %>
+    <section>
+      <h2 class="formText">Search for your dream home</h2>
+      <form class="formText" name="search_form" method="POST" enctype="multipart/form-data" action="/">
+          <p>City: <input type="text" name="varosSearch" placeholder="Varos neve"
+              pattern="^[A-z ]*$" title="You can only insert letters in this field" class="formText inputText" ></p>
+          <p>District: <input type="text" name="negyedSearch" placeholder="Negyed neve"
+              pattern="^[A-z ]*$" title="You can only insert letters in this field" class="formText inputText" ></p>
+          <p>Min budget: <input type="text" name="minArSearch" pattern="^[1-9][0-9]*$" placeholder="Minimum ar euroban"
+              title="You can only insert numbers in this field" class="formText inputText" inputText ></p>
+          <p>Max budget: <input type="text" name="maxArSearch" pattern="^[1-9][0-9]*$" placeholder="Maximum ar euroban"
+              title="You can only insert numbers in this field" class="formText inputText" ></p>
+          <p><input class="inputSubmit" type="submit" value="Filter"></p>
+      </form>
+    </section>
+    <% if(empty == true) {%>
+      <p ><strong>Currently, there are no available properties :(</strong></p>
+    <% }else { %>
+    <% ads.forEach( (ad) => { %>
+    <div class="lakasok formText" id="div<%= ad.adID %>">
+      <ul onclick="showDetails('<%= ad.adID %>', event)" style="list-style-type:none;">
+        <li><strong>Owner: </strong> <%= ad.owner %></li>
+        <li><strong>PropertyID: </strong> <%= ad.adID %></li>
+        <li><strong>City: </strong><%= ad.varos %></li>
+        <li><strong>District: </strong><%= ad.negyed %></li>
+        <li><strong>Area: </strong><%= ad.felszinterulet %></li>
+        <li id="details<%= ad.adID %>"><strong>Price: </strong><%= ad.ar %></li>
+        <li>
+          <form action="/showDetails" method="post"> 
+            <input name="adID" hidden selected value="<%= ad.adID %>"></input>
+            <input class="inputSubmit adButton" type="submit" value="DETAILS">
+          </form> 
+        </li>
+        <% if(ad.logedUserIsOwner || isUserAdmin) { %>
+        <li>
+            <button onclick="deleteAd('<%= ad.adID %>', event)" class="inputSubmit adButton">DELETE</button>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <% }); %>
+    <% } %>
+    
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* A HTML törzsében legyen (a szöveggel együtt gördülő) háttérkép (lehetőleg ne legyen túl sötét kép),
+mely az x és y tengely mentén egyaránt ismétlődik */
+body{
+    background-image: url("background_colour.png");
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+/*Elemre vonatkozó szelektorok (osztály/ID nélkül) segítségével oldjuk meg, hogy a főcím (h1) és alcím
+(h2) színe, háttérszíne, betű-típus családja legyen egyforma*/
+h1,h2{
+    font-family: 'Squad', sans-serif;
+    color:black;
+    background-color: #c5eaff;
+}
+
+/*Definiáljunk (és használjunk a HTML oldalon) két különböző stílusú (sorszám nélküli) listát.
+Használjunk csak az illető elemre vonatkozó stílusosztályokat (class).
+*/
+ul.malm_masuratori{
+    list-style-type: circle;
+    list-style-position: outside;
+}
+
+ul.kleppstad_masuratori{
+    list-style-type: square;
+    list-style-position: outside;
+}
+
+/*Általános stílusosztály (osztály, mely nincs ráhúzva egy elemtípusra) segítségével oldjuk meg, hogy
+különböző HTML elemek stílusa (szín, betűméret, szöveg-igazítása, szöveg-díszítése) ugyanaz
+legyen. Alkalmazzuk ugyanazt a stílusosztályt az em és p elemekre.*/
+
+.style{
+    color:black;
+    font-size: 20px;
+    text-align: left;
+    text-decoration: none;
+}
+
+/*Adjuk meg (kontextussal megadott szelektort használva) egy nav elemben elhelyezkedő div elem
+stílusát (kerekített szegély, szövegméret).*/
+
+nav > div{
+    display:inline-flex;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: rgb(222, 216, 252);
+}
+
+/* Definiáljunk két különböző hivatkozás (link) típust, melyeknek más és más a színe, szövegdíszítése
+ha rámegyünk az egérrel, ha aktív, ha már meglátogattuk.*/
+
+a.link:link{
+    color:rgb(5, 5, 5);
+    text-decoration: none;
+}
+
+a.link:visited{
+    color: rgb(57, 28, 184);
+    font-style: italic;
+}
+
+a.link:hover{
+    color:rgb(196, 111, 32);
+    text-decoration: underline;
+}
+
+a.link:active{
+    color:rgb(243, 75, 109);
+    font-weight: bold;
+}
+
+/*• Definiáljunk egy olyan div stílust, mely be van keretezve szaggatott vonallal. A szöveg legyen balra
+tolódva a kereten belül (a jobboldali behúzás–padding–legyen nagyobb). A keret elemei (alsó, felső,
+stb. rész) legyenek más-más színűek*/
+
+div.stilus{
+    border-style: dashed;
+    padding-left: 10%;
+    border-color: red green blue pink;
+    
+}
+
+/*Definiáljuk a táblázat esetén két különböző cella-stílust (a két stílus pepita -lásd sakktábla- minta
+szerint váltakozzon). Ne használjunk osztályokat, a HTML-be ne kelljen kézzel jelölőket írni a
+cellákhoz*/
+
+tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd) {
+    background-color: rgb(155, 169, 170);
+}
+
+tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd) {
+    background-color:rgb(135, 139, 138);
+}
+
+/*Rajzoljunk különböző színű téglalapokból díjkiosztó pódiumot (1., 2., 3 helyezés vagy arany-, ezüst-,
+bronzérem felirattal)*/
+
+#podium{
+    width: 600px;
+    height: 400px;
+    align-items: flex-end;
+    display: flex;
+    text-align: center;
+}
+
+#elso_hely {
+    background: gold; 
+    font-size: 60px; 
+    flex: 1;
+    padding: 30px; 
+    width: 100px;
+    height: 250px;
+    transition: height 2s ease;
+}
+
+#masodik_hely {
+    background: silver;
+    font-size: 60px; 
+    flex: 1;
+    padding: 30px; 
+    width: 100px;
+    height: 175px;
+    transition: height 2s ease;
+}
+
+#harmadik_hely {
+    background:	rgb(205, 127, 50);
+    font-size: 60px; 
+    flex: 1;
+    padding: 30px; 
+    width: 100px;
+    height: 100px;
+    transition: height 2s ease;
+}
+
+/*CSS3 átmenetek (transition) segítségével oldjuk meg, hogy a téglalapok mérete változzon
+amennyiben fölé visszük a kurzort. Ne egyből változzon ez a tulajdonság, hanem graduálisan 2
+másodperc folyamán.*/
+
+#elso_hely:hover{
+    height: 350px;
+}
+
+#masodik_hely:hover{
+    height: 350px;
+}
+
+#harmadik_hely:hover{
+    height: 350px;
+}
+
+/*other*/
+
+.table{
+    margin-bottom: 20px;
+}
+
+table, td, th {
+    border: 1px solid #000000;
+    width: 500px;
+    text-align: center;
+}
+
+img.top_image{
+    position: absolute;
+    top: 0px;
+}
+
+.furniture {
+    display:inline-block;
+ }
+
+ h1 {
+    padding-top: 17%;
+ }

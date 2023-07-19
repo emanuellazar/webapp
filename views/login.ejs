@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <%- include('partials/head.ejs') %>
+    <body>
+        <div class="header">
+            <%- include('partials/header.ejs') %>
+            <h2>Log into your account</h2>
+        </div>
+        <section>
+            <form name="user_sign_up" method="POST" action="/login" enctype="multipart/form-data">
+                <p class="formText">Username: <input class="formText inputText" type="text" name="userName" placeholder="Username"
+                    pattern="^[A-z ]*$" title="You can only insert letters in this field" required></p>
+                <p class="formText">Password: <input class="formText inputPassword" type="password" name="password" placeholder="Password" required></p>
+                <p><input class="inputSubmit" type="submit" value="Submit"></p>
+            </form>
+        </section>
+    </body>
+
+</html>

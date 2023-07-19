@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <title>Lazar Imobiliare</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class = "header">
+            <a>Lakashirdetes keszitese</a>
+            <a href = "./upload_photo.html">Kepek feltoltese</a>
+            <a href = "search.html">Lakas Kereses</a>
+        </div>
+        <h1>Lazar Imobiliare</h1>
+        <section>
+            <h2>Tolts fel te is egy lakashirdetest az orszag legjobb lakashirdeto oldalara</h2>
+            <p>Csak toltsd ki az urlapot, a tobbirol gondokodunk mi ;)</p>
+            <form name="user_post_form" method="POST" action="/userPost" enctype="multipart/form-data">
+                <p>Varos: <input type="text" name="varos" placeholder="Varos neve"
+                    pattern="^[A-z ]*$" title="You can only insert letters in this field" required></p>
+                <p>Negyed: <input type="text" name="negyed" placeholder="Negyed neve"
+                    pattern="^[A-z ]*$" title="You can only insert letters in this field" required></p>
+                <p>Felszinterulet: <input type="text" name="felszinterulet" placeholder="Lakas felszinterulet negyzetmeterben"
+                    pattern="^[1-9][0-9]*$" title="You can only insert numbers in this field" required></p>
+                <p>Ar: <input type="text" name="ar" pattern="^[1-9][0-9]*$" placeholder="Lakas ara euroban"
+                    title="You can only insert numbers in this field" required></p>
+                <p>Szobak szama: <input type="text" name="szobakSzama" placeholder="Szobak szama a lakasban"
+                    pattern="^[1-9][0-9]*$" title="You can only insert numbers in this field" required></p>
+                <p>Feltoltes datuma: <input type="date" name="date" required></p>
+                <p><input type="submit" value="Submit"></p>
+            </form>
+        </section>
+    </body>
+
+</html>

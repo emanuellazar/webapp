@@ -1,0 +1,38 @@
+<div class="page-header">
+    <form action="/createUser" method="get">
+        <input id="signup" class="inputSubmit headerButtonRight" type="submit" value="Sign up">
+    </form>
+    <% if(!isLogedIn) { %>
+    <form action="/login" method="get">
+        <input id="login" class="inputSubmit headerButtonRight" type="submit" value="Login">
+    </form>
+    <% }  else { %>
+    <p id="username" class="inputSubmit headerButtonLeft"><%= logedUserName%> - <%= role %></p>
+    <form action="/logout" method="post">
+        <input id="logout" class="inputSubmit headerButtonLeft" type="submit" value="Logout">
+    </form>
+    <% } %>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-caption">
+                    <h1 class="page-title">Real Estate Agency - Lazar</h1>
+                    <h2 class="page-title">R.E.A.L</h2>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <form method="get" action="/">
+        <input id="adsListed" type="submit" value="Click here to see the properties listed">
+    </form> 
+    <% if(isLogedIn)  { %>
+        <% if (role === 'admin'){ %>
+        <form method="get" action="/userList">
+            <input id="userList" type="submit" value="Manage Users">
+        </form> 
+        <% } %>
+        <form method="get" action="/messageUserList">
+            <input id="userList" type="submit" value="Send messages">
+        </form> 
+    <% } %>
+</div>
